@@ -4,11 +4,12 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
+    color: white;
+    user-select: none;
 }
 
 h1 {
     font-family: 'Courgette', cursive;
-    color: white;
     font-weight: 100;
     font-size: 1.8rem;
 }
@@ -75,7 +76,7 @@ main {
 
 .scroll-visible::-webkit-scrollbar{
     display: block;
-    width: 3px;
+    width: 1.5px;
     transition: all 2s ease-in;
 }
 
@@ -87,6 +88,62 @@ main {
     color: none;
 }
 
+.songs{
+    width: 100%;
+    padding: 10px 50px;
+}
+.song{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    padding: 0px 0px 0px 10px;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    border-bottom: 1px solid grey;
+}
+.song-img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.song-img img{
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    object-position: center;
+}
+.song-details{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.song-name{
+    font-family: 'Gluten', cursive;
+    font-size: 1.5rem;
+}
+.artists{
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-top: 3px;
+}
+.song-btn{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin: 0px 2px;
+}
+
+/* Current */
 .current {
     width: 40%;
     height: 100%;
@@ -97,8 +154,41 @@ main {
     background-color: rgba(0, 0, 0, 0.48);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 10px 50px;
+}
+.current-head{
+    text-decoration: underline white;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
 
+.current-song-img{
+    margin: 20px 0px 10px 0px;
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+}
+
+.current-song-img img{
+    width: 100%;
+    height: 100%;
+} 
+
+.current-song-name h1{
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: white;
+    -webkit-text-stroke: 0.35px black;
+}
+
+.current-song-name p{
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 2px;
+    color: white;
+}
 /* player */
 
 #player {
