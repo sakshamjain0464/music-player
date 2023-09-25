@@ -63,24 +63,24 @@ main {
 
 .song-list::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .song-list::-webkit-scrollbar-track {
     border-radius: 50px;
-  }
-  
+}
+
 .song-list::-webkit-scrollbar-thumb {
     background: rgb(153, 149, 172);
     border-radius: 20px;
-  }
+}
 
-.scroll-visible::-webkit-scrollbar{
+.scroll-visible::-webkit-scrollbar {
     display: block;
     width: 1.5px;
     transition: all 2s ease-in;
 }
 
-.songs_head{
+.songs_head {
     padding: 10px 15px;
     letter-spacing: 1.5px;
     text-decoration: underline white;
@@ -88,33 +88,37 @@ main {
     color: none;
 }
 
-.songs{
+.songs {
     width: 100%;
     padding: 10px 50px;
 }
-.song{
+
+.song {
     display: flex;
     height: 60px;
     width: 100%;
     align-items: center;
     padding: 0px 0px 0px 10px;
     justify-content: space-around;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border-bottom: 1px solid grey;
 }
-.song-img{
+
+.song-img {
     width: 55px;
     height: 55px;
     border-radius: 50%;
     overflow: hidden;
 }
-.song-img img{
+
+.song-img img {
     width: 55px;
     height: 55px;
     object-fit: cover;
     object-position: center;
 }
-.song-details{
+
+.song-details {
     width: 80%;
     height: 100%;
     display: flex;
@@ -122,17 +126,20 @@ main {
     justify-content: center;
     flex-direction: column;
 }
-.song-name{
+
+.song-name {
     font-family: 'Gluten', cursive;
     font-size: 1.5rem;
 }
-.artists{
+
+.artists {
     font-family: 'Lato', sans-serif;
     font-size: 0.8rem;
     letter-spacing: 1px;
     margin-top: 3px;
 }
-.song-btn{
+
+.song-btn {
     width: 50px;
     height: 50px;
     display: flex;
@@ -156,13 +163,14 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.125);
     padding: 10px 50px;
 }
-.current-head{
+
+.current-head {
     text-decoration: underline white;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
-.current-song-img{
+.current-song-img {
     margin: 20px 0px 10px 0px;
     width: 70%;
     height: 70%;
@@ -171,30 +179,217 @@ main {
     overflow: hidden;
 }
 
-.current-song-img img{
+.current-song-img img {
     width: 100%;
     height: 100%;
-} 
+}
 
-.current-song-name h1{
+.current-song-name h1 {
     font-size: 2rem;
     letter-spacing: 2px;
     color: white;
     -webkit-text-stroke: 0.35px black;
 }
 
-.current-song-name p{
+.current-song-name p {
     font-size: 1rem;
     letter-spacing: 1px;
     margin-top: 2px;
     color: white;
 }
+
 /* player */
 
 #player {
-    height: 15vh;
+    height: 17vh;
     position: sticky;
     width: 100vw;
     bottom: 0px;
     background: #000;
+}
+
+.playing-gif {
+    height: 100%;
+    width: 100%;
+    margin-right: 10px;
+    background: red;
+    position: relative;
+}
+
+.playing-gif video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.playing-song {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    position: absolute;
+    padding: 10px 0px;
+    backdrop-filter: brightness(30%);
+}
+
+.playing-name {
+    margin-top: 5px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.playing-name p {
+    font-family: 'Gluten', cursive;
+    letter-spacing: 1.25px;
+    font-size: 1.8rem;
+}
+
+/* Progress bar css */
+.progress {
+    margin: 15px 0px 5px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+input[type=range] {
+    width: 60%;
+    appearance: none;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-ms-track {
+    width: 60%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -5px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+/* For Firefox */
+input[type=range]::-moz-range-thumb {
+    border: 1px solid #000000;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+/* For Edge */
+input[type=range]::-ms-thumb {
+    border: 1px solid #000000;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+/* Slider Track */
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: rgb(153, 149, 172);
+    border-radius: 5px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: rgb(153, 149, 172);
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: rgb(153, 149, 172);
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: rgb(153, 149, 172);
+    ;
+    border: 0.2px solid #010101;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: rgb(153, 149, 172);
+    ;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: rgb(153, 149, 172);
+    ;
+    border: 0.2px solid #010101;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: rgb(153, 149, 172);
+}
+
+.playing-btn{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playing-btn i{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 50%;
 }

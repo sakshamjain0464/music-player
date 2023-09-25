@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-select=none">
@@ -8,9 +9,11 @@
     <title>Music Player</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Gluten:wght@300&family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Gluten:wght@300&family=Lato&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <nav>
         <h1>My Music Player</h1>
@@ -83,7 +86,25 @@
             </div>
         </div>
     </main>
-    <section id="player"></section>
+    <section id="player">
+        <div class="playing-gif">
+            <video src="play.mp4" autoplay muted loop></video>
+        </div>
+        <div class="playing-song">
+            <div class="playing-name">
+                <p>Apna Bana Le - Bhediya</p>
+            </div>
+            <div class="progress">
+                <input type="range" min="0" max="100" value="0">
+            </div>
+            <div class="playing-btn">
+                <i class="back-btn fa fa-forward"></i>
+                <i class="play-btn fa fa-play"></i>
+                <i class="forwar-btn fa fa-forward"></i>
+            </div>
+        </div>
+    </section>
 </body>
 <script src="script.js"></script>
+
 </html>
