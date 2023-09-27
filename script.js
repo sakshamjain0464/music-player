@@ -45,23 +45,81 @@ list.forEach((value)=>{
     song.setAttribute('id', `${value.song_id}`);
     song.setAttribute('class', `song`);
     songs.append(song);
-    console.log(song);
 })
 
 // Music Playing
-let currentSongIndex = 1; 
+let currentSongIndex = 0; 
 let currentAudio = new Audio(list[currentSongIndex].file_path);
-currentAudio.play()
 
 // Now Playing
 const nowPlayingCover = document.querySelector(".current-song-img img");
 const nowPlayingName = document.querySelector(".current-song-name h1");
 const nowPlayingArtists = document.querySelector(".current-song-name p");
-
 // Function to change now playing song
 function changeNowPlaying(){
     nowPlayingCover.setAttribute("src", list[currentSongIndex].cover_path);
     nowPlayingName.innerHTML = list[currentSongIndex].song_name;
     nowPlayingArtists.innerHTML = list[currentSongIndex].artists;
 }
+changeNowPlaying();
+// Handling Player
+
+const play = document.querySelector('.play-btn');
+const previous = document.querySelector(".back-btn");
+const  next = document.querySelector(".forward-btn");
+const playerGIF = document.querySelector('video');
+let progressBar = document.querySelector('.progress input');
+
+function playSong(){
+    if(currentAudio.paused){
+        currentAudio.play();
+        play.classList.remove('fa-play');
+        play.classList.add('fa-pause');
+        playerGIF.play();
+    }
+    else{
+        currentAudio.pause();
+        play.classList.remove('fa-pause');
+        play.classList.add('fa-play');
+        playerGIF.pause();
+    }
+    currentAudio.addEventListener("timeupdate", ()=>{
+        let audioProgress = (currentAudio.currentTime/currentAudio.duration)*100;
+        console.log(audioProgress)
+            progressBar.value = audioProgress;
+        if(audioProgress >= 100){
+            playNext();
+        }
+    })
+}
+
+function playNext(){
+    currentSongIndex++;
+    currentAudio.pause();
+    delete currentAudio;
+    if(currentSongIndex == 15){
+        currentSongIndex = 0;
+    }
+    currentAudio = new Audio(list[currentSongIndex].file_path);
+    progressBar.value = '0'
+    playSong();
+    changeNowPlaying();
+}
+
+function playPrevious(){
+    currentSongIndex--;
+    currentAudio.pause();
+    delete currentAudio;
+    if(currentSongIndex < 0){
+        currentSongIndex = 0;
+    }
+    currentAudio = new Audio(list[currentSongIndex].file_path);
+    progressBar.value = '0'
+    playSong();
+    changeNowPlaying();
+}
+
+
+
+
 

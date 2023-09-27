@@ -46,16 +46,13 @@
             <video src="play.mp4" pause muted loop></video>
         </div>
         <div class="playing-song">
-            <div class="playing-name">
-                <p>Apna Bana Le - Bhediya</p>
-            </div>
             <div class="progress">
                 <input type="range" min="0" max="100" value="0">
             </div>
             <div class="playing-btn">
-                <i class="back-btn fa fa-backward"></i>
-                <i class="play-btn fa fa-play"></i>
-                <i class="forwar-btn fa fa-forward"></i>
+                <i class="back-btn fa fa-backward" onclick="playPrevious()"></i>
+                <i class="play-btn fa fa-play" onclick="playSong()"></i>
+                <i class="forward-btn fa fa-forward" onclick="playNext()"></i>
             </div>
         </div>
     </section>

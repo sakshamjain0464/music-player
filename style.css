@@ -147,8 +147,9 @@ main {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 1px solid white;
     margin: 0px 2px;
+    cursor: pointer;
 }
 
 /* Current */
@@ -202,7 +203,7 @@ main {
 /* player */
 
 #player {
-    height: 17vh;
+    height: 14vh;
     position: sticky;
     width: 100vw;
     bottom: 0px;
@@ -238,12 +239,6 @@ main {
     position: absolute;
     padding: 10px 0px;
     backdrop-filter: brightness(30%);
-}
-
-.playing-name {
-    margin-top: 5px;
-    height: fit-content;
-    width: fit-content;
 }
 
 .playing-name p {
@@ -353,7 +348,6 @@ input[type=range]::-ms-track {
 
 input[type=range]::-ms-fill-lower {
     background: rgb(153, 149, 172);
-    ;
     border: 0.2px solid #010101;
     border-radius: 5px;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -361,12 +355,10 @@ input[type=range]::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-lower {
     background: rgb(153, 149, 172);
-    ;
 }
 
 input[type=range]::-ms-fill-upper {
     background: rgb(153, 149, 172);
-    ;
     border: 0.2px solid #010101;
     border-radius: 5px;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
