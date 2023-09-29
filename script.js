@@ -27,6 +27,8 @@ const list = [
     {song_id : 15, song_name : "Deva Deva - Bhrahmastra", artists : "Arijit Singh", file_path : "./songs/song-15.mp3", cover_path : "./covers/cover-15.jpg"}
 ]
 
+let song_no = list.length;
+console.log(song_no)
 const songs = document.querySelector('ul');
 songs.classList.add('songs');
 
@@ -39,11 +41,22 @@ list.forEach((value)=>{
                     <p class="song-name">${value.song_name}</p>
                     <p class="artists">${value.artists}</p>
                     </div>
-                    <div class="song-btn">
-                    <i class="fa fa-play"></i>
+                    <div class="song-btn song-${value.song_id}-btn">
+                    <i class="fa fa-play" onclick="playThis()" id = "${value.song_id}"></i>
                     </div>`;
-    song.setAttribute('id', `${value.song_id}`);
     song.setAttribute('class', `song`);
+    song.addEventListener('click' , (song)=>{
+        if(song.target.tagName == 'I'){
+            song_play = document.querySelector(`.song-${currentSongIndex+1}-btn i`);
+            song_play.classList.remove('fa-pause');
+            song_play.classList.add('fa-play');
+            currentAudio.pause();
+            currentSongIndex = parseInt(song.target.id) - 1;
+            currentAudio = new Audio(list[currentSongIndex].file_path);
+            playSong();
+            changeNowPlaying();
+        }
+    })
     songs.append(song);
 })
 
@@ -69,24 +82,29 @@ const previous = document.querySelector(".back-btn");
 const  next = document.querySelector(".forward-btn");
 const playerGIF = document.querySelector('video');
 let progressBar = document.querySelector('.progress input');
+let song_play = document.querySelector(`.song-${currentSongIndex+1}-btn i`);
 
 function playSong(){
+    song_play = document.querySelector(`.song-${currentSongIndex+1}-btn i`);
     if(currentAudio.paused){
         currentAudio.play();
         play.classList.remove('fa-play');
         play.classList.add('fa-pause');
         playerGIF.play();
+        song_play.classList.remove('fa-play');
+        song_play.classList.add('fa-pause');
     }
     else{
         currentAudio.pause();
         play.classList.remove('fa-pause');
         play.classList.add('fa-play');
         playerGIF.pause();
+        song_play.classList.remove('fa-pause');
+        song_play.classList.add('fa-play');
     }
     currentAudio.addEventListener("timeupdate", ()=>{
         let audioProgress = (currentAudio.currentTime/currentAudio.duration)*100;
-        console.log(audioProgress)
-            progressBar.value = audioProgress;
+        progressBar.value = audioProgress;
         if(audioProgress >= 100){
             playNext();
         }
@@ -94,32 +112,51 @@ function playSong(){
 }
 
 function playNext(){
+    song_play = document.querySelector(`.song-${currentSongIndex+1}-btn i`);
+    song_play.classList.remove('fa-pause');
+    song_play.classList.add('fa-play');
     currentSongIndex++;
     currentAudio.pause();
-    delete currentAudio;
-    if(currentSongIndex == 15){
+    if(currentSongIndex == song_no){
         currentSongIndex = 0;
     }
     currentAudio = new Audio(list[currentSongIndex].file_path);
-    progressBar.value = '0'
+    progressBar.value = '0';
     playSong();
     changeNowPlaying();
 }
 
 function playPrevious(){
+    song_play = document.querySelector(`.song-${currentSongIndex+1}-btn i`);
+    song_play.classList.remove('fa-pause');
+    song_play.classList.add('fa-play');
     currentSongIndex--;
     currentAudio.pause();
-    delete currentAudio;
     if(currentSongIndex < 0){
         currentSongIndex = 0;
     }
     currentAudio = new Audio(list[currentSongIndex].file_path);
-    progressBar.value = '0'
+    progressBar.value = '0';
     playSong();
     changeNowPlaying();
 }
 
+progressBar.addEventListener('input', ()=>{
+    currentAudio.currentTime = (progressBar.value * currentAudio.duration)/100;
+    if(currentAudio.paused == true){
+        playSong();
+    }
+})
 
-
-
+window.addEventListener('keydown', (key)=>{
+    if(key.code == 'Space'){
+        playSong();
+    }
+    else if(key.code == "ArrowRight"){
+        playNext();
+    }
+    else if(key.code == "ArrowLeft"){
+        playPrevious();
+    }
+})
 
